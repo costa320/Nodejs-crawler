@@ -4,6 +4,7 @@
   "description": "nodejs-crawler-description",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -41,6 +42,7 @@
     "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.4.4",
     "morgan": "^1.10.0",
+    "open": "^8.4.0",
     "request": "^2.88.2",
     "run": "^1.4.0",
     "style-loader": "^3.3.1",

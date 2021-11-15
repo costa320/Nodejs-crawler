@@ -1,4 +1,5 @@
 require("dotenv").config();
+const open = require("open");
 /* MAIN Express */
 const express = require("express");
 const app = express();
@@ -49,4 +50,7 @@ process.env.PORT = process.env.PORT || 5000;
 app.listen(process.env.PORT);
 extras.VerbalHelper();
 
-app.use("/static", express.static(path.resolve(__dirname, "build")));
+if (process.env.enviroment === "DEV") {
+  // opens the url in the default browser
+  open(`http://localhost:${process.env.PORT}/api-docs`);
+}
