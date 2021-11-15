@@ -84,15 +84,6 @@
     }
   },
   "definitions": {
-    "Crawler": {
-      "required": ["url"],
-      "properties": {
-        "url": {
-          "type": "string"
-        }
-      }
-    },
-
     "arrDownload": {
       "required": ["arrayList"],
       "type": "array",
