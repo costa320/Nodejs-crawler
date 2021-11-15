@@ -24,23 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
-/* STATIC REACT BUILD */
-// app.use(express.static(path.resolve(__dirname, "build"), optionsStatic));
-
-// /* GESTIONE ROUTING REACT E VARI REFRESH RICHIESTI DAL BROWSER */
-// router.get("/", ensureAuthenticated, function (req, res, next) {
-//     var i = path.resolve(__dirname, "build/index.html");
-//     res
-//         .sendFile(i, function (err) {
-//             if (err) {
-//                 console.log('INDEX.HTML NOT FOUND ERROR!');
-//                 res
-//                     .status(500)
-//                     .send(err);
-//             }
-//         });
-// });
-
 /* Routes */
 app.use(router);
 app.use("/api", CrawlerAPI);
