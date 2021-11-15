@@ -5,8 +5,6 @@ const express = require("express");
 const app = express();
 var router = express.Router();
 const path = require("path");
-/* REQUEST MODULES */
-var request = require("request");
 /* ROUTERS */
 var CrawlerAPI = require("./routes/crawler.api.routes");
 
