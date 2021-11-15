@@ -1,0 +1,114 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Node js crawler CRUD",
+    "description": "My crawler",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+
+  "paths": {
+    "/api/getAllImagesByUrl/{url}": {
+      "parameters": [
+        {
+          "name": "url",
+          "in": "path",
+          "required": true,
+          "description": "url you want to use",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Crawler"],
+        "summary": "Get all images on web page, download them",
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": { "$ref": "#/definitions/arrDownload" }
+          }
+        }
+      }
+    },
+    "/api/downloadImagesByList": {
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "'#/components/schemas/arrDownload'" }
+          },
+          "application/xml": {
+            "schema": { "$ref": "'#/components/schemas/arrDownload'" }
+          },
+          "application/x-www-form-urlencoded": {
+            "schema": { "$ref": "'#/components/schemas/arrDownload'" }
+          },
+          "text/plain": { "schema": { "type": "string" } }
+        }
+      },
+
+      "parameters": [
+        {
+          "name": "arrDownload",
+          "in": "body",
+          "required": true,
+          "description": "url you want to use",
+          "schema": { "$ref": "#/definitions/arrDownload" }
+        }
+      ],
+      "post": {
+        "tags": ["Crawler"],
+        "summary": "Downloads all the images inside the list",
+        "schema": { "$ref": "#/definitions/arrDownload" },
+
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "application/json": {
+                "downloaded": 3,
+                "inError": 45
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Crawler": {
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+
+    "arrDownload": {
+      "required": ["arrayList"],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nameSpace": {
+            "type": "string",
+            "example": "ImageName"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://..."
+          }
+        }
+      }
+    }
+  }
+}
